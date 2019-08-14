@@ -1,13 +1,52 @@
 <?xml version="1.0"?>
 <package>
     <name>NoFraud_TegraDirect</name>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <stability>stable</stability>
     <license uri="https://opensource.org/licenses/afl-3.0">Academic Free License</license>
     <channel>community</channel>
     <extends/>
-    <summary>The #1 most effective end-to-end fraud prevention solution for eCommerce businesses.</summary>
-    <description>NoFraud is a full-service solution. AVS/CVV is built-in, it works in real-time, has a live cardholder verification team, and provides merchants with white/black lists. Setup is simple and pricing is transaction based with no additional fees. NoFraud is certified as PCI compliant at the highest level.</description>
+    <summary>Forget fraud and improve your bottom line - approve more, zero manual review and reduce fraud almost entirely.</summary>
+    <description>&lt;h3&gt;About NoFraud&lt;/h3&gt;&#xD;
+&lt;p&gt;Online fraud is a big expense for almost every eCommerce merchant. With NoFraud, you can rest easy that your business is safe from fraudulent transactions &amp; wash your hands of all fraud prevention tasks that occupy hours of your staff&#x2019;s time e.g. manual review, rule building.&lt;/p&gt;&#xD;
+&lt;p&gt;NoFraud offers e-commerce fraud prevention through real-time virtual identity verification. We deliver individual, real-time decisions for each transaction using thousands of data points and virtually every fraud detection technology available. NoFraud has successfully reduced fraud for its customers to below 0.1% of transactions, and virtually eliminates false positives with live cardholder verification.&lt;/p&gt;&#xD;
+&lt;p&gt;The solution is fully automated and managed by in-house experts, requiring no input from the merchants, not even manual review - cardholder verification is done internally by NoFraud.&lt;/p&gt;&#xD;
+&lt;h3&gt;NoFraud Impact&lt;/h3&gt;&#xD;
+&lt;ol&gt;&#xD;
+&lt;li&gt;&lt;strong&gt;Fraud below 0.1%&lt;/strong&gt; - Our average current customers' rate of fraud is below 0.01%, due to our intelligent technology and dedicated staff who keep up to date with the complex, ever-evolving face of fraud&lt;/li&gt;&#xD;
+&lt;li&gt;&lt;strong&gt;False positives below 0.2%&lt;/strong&gt; - NoFraud is as focused on approving transaction as it is on identifying fraudulent transactions. Our experts are constantly monitoring transactions to ensure no order is overlooked.&lt;/li&gt;&#xD;
+&lt;li&gt;&lt;strong&gt;0 Manual review&lt;/strong&gt; - No rules, risk thresholds to manage or manually reviewing orders before processing.&lt;/li&gt;&#xD;
+&lt;li&gt;&lt;strong&gt;No commitments&lt;/strong&gt; - $0 setup fee, low per-transaction billing and there are no contract terms holding you hostage if you are not 100% satisfied with the NoFraud service.&lt;/li&gt;&#xD;
+&lt;li&gt;&lt;strong&gt;Optional Chargeback Protection&lt;/strong&gt; - Turn your Chargeback Protection on and off as you see fit - allowing for the optimal savings.&lt;/li&gt;&#xD;
+&lt;/ol&gt;&#xD;
+&lt;h3&gt;How NoFraud Works&lt;/h3&gt;&#xD;
+&lt;strong&gt;This extension will send transactions to the NoFraud application to intercept fraudulent transactions in real-time before they are ever sent to your gateway for processing.&lt;/strong&gt;&lt;br /&gt;&lt;br /&gt;&#xD;
+&lt;img src="https://www.nofraud.com/assets/how_it_works/gif-edited-slow-sliced-50c920342ced522f4133fa99711bb42ca56958cad2bc11166d1aa44864771b76.gif" alt="Gif edited slow sliced" /&gt;&#xD;
+&lt;p&gt;Declined transactions are bounced back to the customer who is still at the cart while approved transactions are passed along to the gateway for processing.&lt;/p&gt;&#xD;
+&lt;br /&gt;&lt;strong&gt;NoFraud gives you decisions you can rely on, not a score or a rule engine that requires expertise to manage&lt;/strong&gt;&lt;br /&gt;&lt;br /&gt;&#xD;
+&lt;img src="https://www.nofraud.com/assets/how_it_works/fraud-flow-7742ab3aef3e35d455a911b80228076832a539057ef6bd060497ccbe5a45fa1c.png" alt="Fraud flow" /&gt;&#xD;
+&lt;span&gt;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;Cardholder Verification (&lt; 0.5% of transactions)&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&#xD;
+&lt;br /&gt;&#xD;
+&lt;strong&gt;For transactions where a Pass or Fail decision is not available, NoFraud contacts the cardholder for verification&lt;/strong&gt;&lt;br /&gt;&lt;br /&gt;&#xD;
+&lt;img src="https://www.nofraud.com/assets/how_it_works/gif-review-sliced-02c01fe9f2c6da84053827adaddf1633731dbff5c180b580712c983c512a006b.gif" alt="Gif review sliced" /&gt;&#xD;
+&lt;p&gt;During this process, the transaction in your Magento admin will show as &#x201C;Suspected Fraud&#x201D; until it is verified. NoFraud uses contact information linked to the cardholder when conducting a Cardholder Verification. Once completed, the customer's response is passed back to the merchant for processing or cancellation.&lt;/p&gt;&#xD;
+&lt;h3&gt;Gateway Compatibility&lt;/h3&gt;&#xD;
+&lt;p&gt;This extension collects data from your checkout page which often varies by the Gateway extension being used. We are currently compatible with the Gateways below. If you would like to use this extension and do not see your Gateway listed, please contact us at &lt;a href="mailto:developer@nofraud.com"&gt;developer@nofraud.com&lt;/a&gt; and we would be happy to support you with your Gateway requirement.&lt;/p&gt;&#xD;
+&lt;p&gt;&lt;strong&gt;Tested and compatible:&lt;/strong&gt;&lt;br /&gt;&#xD;
+&lt;span&gt;Authorize.Net&lt;/span&gt;&lt;br /&gt;&#xD;
+&lt;span&gt;Cybersource&lt;/span&gt;&lt;br /&gt;&#xD;
+&lt;span&gt;Chase Paymentech&lt;/span&gt;&lt;br /&gt;&#xD;
+&lt;span&gt;Payeezy&lt;/span&gt;&lt;br /&gt;&#xD;
+&lt;span&gt;USAePay&lt;/span&gt;&lt;br /&gt;&#xD;
+&lt;span&gt;Paypal Payflow Pro&lt;/span&gt;&lt;br /&gt;&#xD;
+&lt;span&gt;Paypal Payments Pro&lt;/span&gt;&lt;br /&gt;&lt;/p&gt;&#xD;
+&lt;p&gt;&lt;strong&gt;Tested and not compatible:&lt;/strong&gt;&lt;br /&gt;&#xD;
+&lt;span&gt;Braintree with v.zero&lt;/span&gt;&#xD;
+&lt;/p&gt;&#xD;
+&lt;p&gt;&lt;strong&gt;Note: there are other integration options that are compatible with these gateways and take only minutes to set up.&lt;/strong&gt;&lt;/p&gt;&#xD;
+&lt;h3&gt;Questions?&lt;/h3&gt;&#xD;
+&lt;p&gt;Please reach out to us with any questions at &lt;a href="mailto:info@nofraud.com"&gt;info@nofraud.com&lt;/a&gt;&lt;/p&gt;&#xD;
+&lt;p&gt;For more info and pricing visit us at &lt;a href="https://www.nofraud.com/"&gt;https://www.nofraud.com/&lt;/a&gt;&lt;/p&gt;</description>
     <notes>Notes: uses  cURL to send information to NoFraud Service.&#xD;
 &#xD;
 Requires NoFraud service account in order to work.&#xD;
@@ -15,11 +54,14 @@ Requires NoFraud service account in order to work.&#xD;
 Configure is set in System &gt; Configuration &gt; Payment Services&#xD;
 &#xD;
 ---------&#xD;
+v1.0.2&#xD;
+Changes to Description other minor details&#xD;
+&#xD;
 v1.0.1&#xD;
 Hotfix for Custom Error message.</notes>
     <authors><author><name>Blumi Gross</name><user>BlumiNoFraud</user><email>blumi@nofraud.com</email></author><author><name>Michael Esposito</name><user>mesposito</user><email>mesposito@nofraud.com</email></author></authors>
-    <date>2016-05-20</date>
-    <time>13:59:44</time>
+    <date>2016-06-24</date>
+    <time>16:02:42</time>
     <contents><target name="magecommunity"><dir name="NoFraud"><dir name="TegraDirect"><dir name="Helper"><file name="Data.php" hash="9575aac8a692bf4f66c5fb62a14a2167"/></dir><dir name="Model"><file name="Observer.php" hash="615fdb5a12ad4059d15357c26a895052"/></dir><dir name="etc"><file name="config.xml" hash="b9aec73a0121f688fe5ce5faab1fa851"/><file name="system.xml" hash="57d0d0d658acf9aad00e13377f53d061"/></dir><dir name="sql"><dir name="tegradirect_setup"><file name="install-1.0.0.php" hash="e894527bb612d9748cf8212f1e38f459"/></dir></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="NoFraud_TegraDirect.xml" hash="5611cb98606f5f733e0820bb47d8418e"/></dir></target></contents>
     <compatible/>
     <dependencies><required><php><min>5.0.0</min><max>5.6.0</max></php><extension><name>curl</name><min>7.35.0</min><max/></extension></required></dependencies>
