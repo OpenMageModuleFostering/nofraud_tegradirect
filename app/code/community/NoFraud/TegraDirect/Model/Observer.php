@@ -47,7 +47,8 @@ class NoFraud_TegraDirect_Model_Observer {
             if(isset($result['decision']) && $result['decision'] == "fail"){
                 $this->last_transaction = "";
                 Mage::getSingleton('core/session')->unsNfLastTransaction();
-                $message = $result['message'] || "Declined";
+                $message = ($result['message'] || "Declined")? $result['message']:"Declined";
+                Mage::log(var_export($result,true),null,'tegra-direct.log');
                 Mage::throwException(Mage::helper('paygate')->__($message));
             }
         }
