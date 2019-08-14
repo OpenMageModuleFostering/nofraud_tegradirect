@@ -86,12 +86,9 @@ class NoFraud_TegraDirect_Model_Observer {
     private function _buildGatewayResponseRequest($id,$payment){
         $order = $payment->getOrder();
         
-        $gateway_status = "fail";
+        $gateway_status = "pass";
         if($payment->getIsFraudDetected()){
             $gateway_status = "review";
-        }
-        if($order->getBaseTotalDue() == 0){
-            $gateway_status = "pass";
         }
 
         $params = [];

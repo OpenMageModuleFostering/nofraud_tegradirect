@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
     <name>NoFraud_TegraDirect</name>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <stability>stable</stability>
     <license uri="https://opensource.org/licenses/afl-3.0">Academic Free License</license>
     <channel>community</channel>
@@ -41,7 +41,9 @@
 &lt;span&gt;Paypal Payflow Pro&lt;/span&gt;&lt;br /&gt;&#xD;
 &lt;span&gt;Paypal Payments Pro&lt;/span&gt;&lt;br /&gt;&lt;/p&gt;&#xD;
 &lt;p&gt;&lt;strong&gt;Tested and not compatible:&lt;/strong&gt;&lt;br /&gt;&#xD;
-&lt;span&gt;Braintree with v.zero&lt;/span&gt;&#xD;
+&lt;span&gt;Braintree with v.zero&lt;/span&gt;&lt;br /&gt;&#xD;
+&lt;span&gt;Authorize.Net DPM&lt;/span&gt;&lt;br /&gt;&#xD;
+&lt;span&gt;Any Saved Card Routine be it CIM or a Magento custom solution&lt;/span&gt;&#xD;
 &lt;/p&gt;&#xD;
 &lt;p&gt;&lt;strong&gt;Note: there are other integration options that are compatible with these gateways and take only minutes to set up.&lt;/strong&gt;&lt;/p&gt;&#xD;
 &lt;h3&gt;Questions?&lt;/h3&gt;&#xD;
@@ -54,15 +56,18 @@ Requires NoFraud service account in order to work.&#xD;
 Configure is set in System &gt; Configuration &gt; Payment Services&#xD;
 &#xD;
 ---------&#xD;
+v1.0.3&#xD;
+Hotfix for a issue we are seeing in our Portal with the Gateway Response even when transaction is in fact successful.&#xD;
+&#xD;
 v1.0.2&#xD;
 Changes to Description other minor details&#xD;
 &#xD;
 v1.0.1&#xD;
 Hotfix for Custom Error message.</notes>
     <authors><author><name>Blumi Gross</name><user>BlumiNoFraud</user><email>blumi@nofraud.com</email></author><author><name>Michael Esposito</name><user>mesposito</user><email>mesposito@nofraud.com</email></author></authors>
-    <date>2016-06-24</date>
-    <time>16:02:42</time>
-    <contents><target name="magecommunity"><dir name="NoFraud"><dir name="TegraDirect"><dir name="Helper"><file name="Data.php" hash="9575aac8a692bf4f66c5fb62a14a2167"/></dir><dir name="Model"><file name="Observer.php" hash="615fdb5a12ad4059d15357c26a895052"/></dir><dir name="etc"><file name="config.xml" hash="b9aec73a0121f688fe5ce5faab1fa851"/><file name="system.xml" hash="57d0d0d658acf9aad00e13377f53d061"/></dir><dir name="sql"><dir name="tegradirect_setup"><file name="install-1.0.0.php" hash="e894527bb612d9748cf8212f1e38f459"/></dir></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="NoFraud_TegraDirect.xml" hash="5611cb98606f5f733e0820bb47d8418e"/></dir></target></contents>
+    <date>2016-07-08</date>
+    <time>17:30:40</time>
+    <contents><target name="magecommunity"><dir name="NoFraud"><dir name="TegraDirect"><dir name="Helper"><file name="Data.php" hash="9575aac8a692bf4f66c5fb62a14a2167"/></dir><dir name="Model"><file name="Observer.php" hash="1e247fcee8afef41bac9e446903792c3"/></dir><dir name="etc"><file name="config.xml" hash="b9aec73a0121f688fe5ce5faab1fa851"/><file name="system.xml" hash="57d0d0d658acf9aad00e13377f53d061"/></dir><dir name="sql"><dir name="tegradirect_setup"><file name="install-1.0.0.php" hash="e894527bb612d9748cf8212f1e38f459"/></dir></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="NoFraud_TegraDirect.xml" hash="5611cb98606f5f733e0820bb47d8418e"/></dir></target></contents>
     <compatible/>
     <dependencies><required><php><min>5.0.0</min><max>5.6.0</max></php><extension><name>curl</name><min>7.35.0</min><max/></extension></required></dependencies>
 </package>
