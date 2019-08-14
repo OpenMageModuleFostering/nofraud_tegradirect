@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <NoFraud_TegraDirect>
+            <active>true</active>
+            <codePool>community</codePool>
+        </NoFraud_TegraDirect>
+    </modules>
+</config>

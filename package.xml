@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package>
+    <name>NoFraud_TegraDirect</name>
+    <version>1.0.0</version>
+    <stability>stable</stability>
+    <license uri="https://opensource.org/licenses/afl-3.0">Academic Free License</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>The #1 most effective end-to-end fraud prevention solution for eCommerce businesses.</summary>
+    <description>NoFraud is a full-service solution. AVS/CVV is built-in, it works in real-time, has a live cardholder verification team, and provides merchants with white/black lists. Setup is simple and pricing is transaction based with no additional fees. NoFraud is certified as PCI compliant at the highest level.</description>
+    <notes>Notes: uses  cURL to send information to NoFraud Service.&#xD;
+&#xD;
+Requires NoFraud service account in order to work.&#xD;
+&#xD;
+Configure is set in System &gt; Configuration &gt; Payment Services</notes>
+    <authors><author><name>Blumi Gross</name><user>BlumiNoFraud</user><email>blumi@nofraud.com</email></author><author><name>Michael Esposito</name><user>mesposito</user><email>mesposito@nofraud.com</email></author></authors>
+    <date>2016-05-13</date>
+    <time>13:31:06</time>
+    <contents><target name="magecommunity"><dir name="NoFraud"><dir name="TegraDirect"><dir name="Helper"><file name="Data.php" hash="9575aac8a692bf4f66c5fb62a14a2167"/></dir><dir name="Model"><file name="Observer.php" hash="30eaa99dc0182f24732855b5844db584"/></dir><dir name="etc"><file name="config.xml" hash="cb2a3a1f76b9f1675f2959137a4f1bbe"/><file name="system.xml" hash="57d0d0d658acf9aad00e13377f53d061"/></dir><dir name="sql"><dir name="tegradirect_setup"><file name="install-1.0.0.php" hash="e894527bb612d9748cf8212f1e38f459"/></dir></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="NoFraud_TegraDirect.xml" hash="5611cb98606f5f733e0820bb47d8418e"/></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.0.0</min><max>5.6.0</max></php><extension><name>curl</name><min>7.35.0</min><max/></extension></required></dependencies>
+</package>

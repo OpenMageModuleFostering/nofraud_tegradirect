@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <NoFraud_TegraDirect>
+            <version>1.0.0</version>
+        </NoFraud_TegraDirect>
+    </modules>
+
+    <global>
+        <models>
+            <NoFraud_TegraDirect>
+                <class>NoFraud_TegraDirect_Model</class>
+            </NoFraud_TegraDirect>
+        </models>
+        <resources>
+            <TegraDirect_setup>
+                <setup>
+                    <module>NoFraud_TegraDirect</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </TegraDirect_setup>
+            <TegraDirect_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </TegraDirect_write>
+            <TegraDirect_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </TegraDirect_read>
+        </resources>
+        <helpers>
+            <TegraDirect>
+                <class>NoFraud_TegraDirect_Helper</class>
+            </TegraDirect>
+        </helpers>
+        <events>
+            <sales_order_payment_place_start>
+                <observers>
+                    <NoFraud_TegraDirect_Model_Log2>
+                        <class>NoFraud_TegraDirect/observer</class>
+                        <method>salesOrderPaymentPlaceStart</method>
+                    </NoFraud_TegraDirect_Model_Log2>
+                </observers>
+            </sales_order_payment_place_start>
+            <checkout_submit_all_after>
+                <observers>
+                    <NoFraud_TegraDirect_Model_Observer>
+                        <class>NoFraud_TegraDirect/observer</class>
+                        <method>CheckoutSubmitAllAfter</method>
+                    </NoFraud_TegraDirect_Model_Observer>
+                </observers>
+            </checkout_submit_all_after>
+        </events>
+    </global>
+
+    <default>
+        <payment_services>
+            <NoFraud_TegraDirect>
+                <active>1</active>
+                <nftoken backend_model="adminhtml/system_config_backend_encrypted" />
+                <sandbox>1</sandbox>
+            </NoFraud_TegraDirect>
+        </payment_services>
+    </default>
+</config>

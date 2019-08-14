@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/NoFraud_TegraDirect",
+    "type": "magento-module",
+    "license": "Academic-Free-License",
+    "homepage": "",
+    "description": "The #1 most effective end-to-end fraud prevention solution for eCommerce businesses.",
+    "authors": [
+    {
+        "name": "Blumi Gross",
+        "email": "blumi@nofraud.com"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}
