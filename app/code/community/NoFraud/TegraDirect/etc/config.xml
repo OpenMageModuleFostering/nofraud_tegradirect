@@ -2,7 +2,7 @@
 <config>
     <modules>
         <NoFraud_TegraDirect>
-            <version>1.0.1</version>
+            <version>1.0.4</version>
         </NoFraud_TegraDirect>
     </modules>
 
@@ -54,6 +54,14 @@
                     </NoFraud_TegraDirect_Model_Observer>
                 </observers>
             </checkout_submit_all_after>
+            <sales_model_service_quote_submit_failure>
+                <observers>
+                    <NoFraud_TegraDirect_Model_Observer>
+                        <class>NoFraud_TegraDirect/observer</class>
+                        <method>salesModelServiceQuoteSubmitFailure</method>
+                    </NoFraud_TegraDirect_Model_Observer>
+                </observers>
+            </sales_model_service_quote_submit_failure>
         </events>
     </global>
 

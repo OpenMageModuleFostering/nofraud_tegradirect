@@ -20,7 +20,7 @@ class NoFraud_TegraDirect_Model_Observer {
                 $response = $this->_sendRequest($request,$this->getURL('gateway_response'));
                 //Mage::log(var_export($response,true),null,'tegra-direct.log');
                 $this->last_transaction = "";
-                Mage::getSingleton('core/session')->unsNfLastTransaction();
+                //Mage::getSingleton('core/session')->unsNfLastTransaction();
             } else {
                 Mage::log("\$this->last_transaction is empty. Skipping.",null,'tegra-direct.log');
             }
@@ -48,13 +48,45 @@ class NoFraud_TegraDirect_Model_Observer {
                 $this->last_transaction = "";
                 Mage::getSingleton('core/session')->unsNfLastTransaction();
                 $message = ($result['message'] || "Declined")? $result['message']:"Declined";
-                Mage::log(var_export($result,true),null,'tegra-direct.log');
+                //Mage::log(var_export($result,true),null,'tegra-direct.log');
                 Mage::throwException(Mage::helper('paygate')->__($message));
             }
         }
     }
 
     public function CheckoutSubmitAllAfter(Varien_Event_Observer $observer){
+        $is_active = $this->getConfigData('active');
+
+        if($is_active){
+            $order = $observer->getEvent()->getOrder();
+            $payment = $order->getPayment();
+
+            if(!empty($this->last_transaction)){
+                $request = $this->_buildGatewayResponseRequest($this->last_transaction['id'],$payment);
+                if(strcmp($request['gateway-response']['result'],'review') != 0){
+                    $request['gateway-response']['result'] = 'pass';
+                }
+                //Mage::log(var_export($request,true),null,'tegra-direct.log');
+                $response = $this->_sendRequest($request,$this->getURL("gateway_response"));
+
+                if($this->last_transaction['decision'] == "review"){
+                    if(!$payment->getIsFraudDetected()){
+                        $payment->setIsTransactionPending(true);
+                        $payment->setIsFraudDetected(true);
+                        $order->setState($order->getState(),Mage_Sales_Model_Order::STATUS_FRAUD);
+                        $payment->save();
+                        $order->save();
+                    }
+                }
+
+                $this->last_transaction = "";
+                Mage::getSingleton('core/session')->unsNfLastTransaction();
+                //Mage::log(var_export($this->last_transaction,true),null,'tegra-direct.log');
+            }
+        }
+    }
+
+    public function salesModelServiceQuoteSubmitFailure(Varien_Event_Observer $observer){
         $is_active = $this->getConfigData('active');
 
         if($is_active){
@@ -78,7 +110,7 @@ class NoFraud_TegraDirect_Model_Observer {
 
                 $this->last_transaction = "";
                 Mage::getSingleton('core/session')->unsNfLastTransaction();
-                Mage::log(var_export($this->last_transaction,true),null,'tegra-direct.log');
+                //Mage::log(var_export($this->last_transaction,true),null,'tegra-direct.log');
             }
         }
     }
@@ -86,9 +118,12 @@ class NoFraud_TegraDirect_Model_Observer {
     private function _buildGatewayResponseRequest($id,$payment){
         $order = $payment->getOrder();
         
-        $gateway_status = "pass";
+        $gateway_status = "fail";
         if($payment->getIsFraudDetected()){
             $gateway_status = "review";
+        }
+        if($order->getBaseTotalDue() == 0){
+            $gateway_status = "pass";
         }
 
         $params = [];
@@ -137,6 +172,10 @@ class NoFraud_TegraDirect_Model_Observer {
         $params['billTo']['country'] = $billing->getCountry();
         $params['billTo']['phoneNumber'] = $billing->getTelephone();
 
+        if(!is_null($billing->getCompany())){
+            $params['billTo']['company'] = $billing->getCompany();
+        }
+
         if(!empty($shipping)){
             $params['shipTo'] = [];
             $params['shipTo']['firstName'] = $shipping->getFirstname();
@@ -146,6 +185,10 @@ class NoFraud_TegraDirect_Model_Observer {
             $params['shipTo']['state'] = $shipping_region->getCode();
             $params['shipTo']['zip'] = $shipping->getPostcode();
             $params['shipTo']['country'] = $shipping->getCountry();
+
+            if(!is_null($shipping->getCompany())){
+                $params['shipTo']['company'] = $shipping->getCompany();
+            }
         }
 
         $params['customer'] = [];
@@ -176,12 +219,8 @@ class NoFraud_TegraDirect_Model_Observer {
             }
         }
 
-        //This is for the next Deployment of Direct API.
-        //$params['order'] = [];
-        //$params['order']['invoiceNumber'] = $order->getIncrementId();
-
-        $params['userFields'] = [];
-        $params['userFields']['orderId'] = $order->getIncrementId();
+        $params['order'] = [];
+        $params['order']['invoiceNumber'] = $order->getIncrementId();
 
         return $params;
     }
@@ -197,9 +236,13 @@ class NoFraud_TegraDirect_Model_Observer {
         curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
 
         $result = curl_exec($ch);
-        //$info = curl_getinfo($ch);
-           
+        //Mage::log(var_export($result,true),null,'tegra-direct.log');
+        $info = curl_getinfo($ch);
+        //Mage::log(var_export($info,true),null,'tegra-direct.log');
+        curl_close($ch);
+
         $res_obj = json_decode($result,true);
+        //Mage::log(var_export($res_obj,true),null,'tegra-direct.log');
         
         return $res_obj;
     }
@@ -211,19 +254,16 @@ class NoFraud_TegraDirect_Model_Observer {
             $data = Mage::helper('core')->decrypt($data);
         }
 
-        //Mage::log("{$datapoint} == {$data}",null,'tegra-direct.log');
         return $data;
     }
 
     private function getURL($addition = ""){
         $url = 'https://api.nofraud.com/'.$addition;
-        //$url = 'https://60c64d03.ngrok.io/'.$addition;
 
         if($this->getConfigData('sandbox')){
             $url = 'https://apitest.nofraud.com/'.$addition;
         }
         
-        //Mage::log(var_export($url,true),null,'tegra-direct.log');
         return $url;
     }
 }
