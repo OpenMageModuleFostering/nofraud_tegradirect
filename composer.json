@@ -1,16 +1,19 @@
 {
-    "name": "OpenMageModuleFostering/NoFraud_TegraDirect",
+    "name": "OpenMageModuleFostering\/NoFraud_TegraDirect",
     "type": "magento-module",
     "license": "Academic-Free-License",
     "homepage": "",
     "description": "Forget fraud and improve your bottom line - approve more, zero manual review and reduce fraud almost entirely.",
     "authors": [
-    {
-        "name": "Blumi Gross",
-        "email": "blumi@nofraud.com"
-    }
-],
+        {
+            "name": "Blumi Gross",
+            "email": "blumi@nofraud.com"
+        }
+    ],
     "suggest": {
-        "magento-hackathon/magento-composer-installer": "*"
-    }
+        "magento-hackathon\/magento-composer-installer": "*"
+    },
+    "keywords": [
+        "openmage-module"
+    ]
 }
